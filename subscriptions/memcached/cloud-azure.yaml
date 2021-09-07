@@ -1,0 +1,18 @@
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: memcached
+  labels:
+    acm-app: memcached
+spec:
+  channel: tenant-a-ch-helm/channel
+  name: memcached
+  packageFilter:
+    version: "5.13.3"
+  placement:
+    placementRef:
+      name: cloud-azure
+  packageOverrides:
+    - packageName: memcached
+      packageAlias: memcached
