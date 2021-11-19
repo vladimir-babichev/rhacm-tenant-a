@@ -2,19 +2,19 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: memcached
-  namespace: tenant-a-service
+  name: nginx
   labels:
-    acm-app: memcached
+    acm-app: nginx
+  annotations:
+    apps.open-cluster-management.io/reconcile-rate: high
 spec:
   channel: tenant-a-ch-helm/channel
-  name: memcached
+  name: nginx
   packageFilter:
-    version: "5.13.3"
+    version: "9.3.3"
   placement:
     placementRef:
       name: cloud-azure
-      namespace: tennant-a
   packageOverrides:
-    - packageName: memcached
-      packageAlias: memcached
+    - packageName: nginx
+      packageAlias: nginx
